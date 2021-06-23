@@ -1,8 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
-import 'components/navbar/navbar.dart';
-
 class AdminierScaffold extends StatefulWidget {
   /// Creates a visual scaffold for material design widgets.
   const AdminierScaffold({
@@ -68,7 +66,7 @@ class AdminierScaffold extends StatefulWidget {
   final bool extendBodyBehindAppBar;
 
   /// An app bar to display at the top of the scaffold.
-  final AdminierNavbar? appBar;
+  final AppBar? appBar;
 
   /// The primary content of the scaffold.
   ///
@@ -541,7 +539,7 @@ class AdminierScaffoldState extends State<AdminierScaffold>
         AnimationController(vsync: this, duration: Duration(milliseconds: 300));
     _animation = CurvedAnimation(
         parent: _animationController, curve: Curves.easeInOutQuad);
-    _animationController.value = 1.0;
+    _animationController.value = 0.0;
     _sidebarOpen = true;
   }
 
@@ -551,6 +549,11 @@ class AdminierScaffoldState extends State<AdminierScaffold>
     final mediaQuery = MediaQuery.of(context);
     setState(() {
       _isMobile = mediaQuery.size.width < _mobileThreshold;
+
+      if (_sidebarOpen && _isMobile) {
+        _sidebarOpen = !_sidebarOpen;
+        _animationController.reverse();
+      }
     });
   }
 

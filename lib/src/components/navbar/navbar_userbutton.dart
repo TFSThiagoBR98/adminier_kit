@@ -180,7 +180,7 @@ class NavbarUserPopUpButton<T> extends StatefulWidget {
       : super(key: key);
 
   @override
-  _NavbarUserPopUpButtonState createState() => _NavbarUserPopUpButtonState();
+  _NavbarUserPopUpButtonState<T> createState() => _NavbarUserPopUpButtonState<T>();
 }
 
 class _NavbarUserPopUpButtonState<T> extends State<NavbarUserPopUpButton<T>> {
@@ -210,6 +210,7 @@ class _NavbarUserPopUpButtonState<T> extends State<NavbarUserPopUpButton<T>> {
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
           Container(
+            width: 48,
             decoration: BoxDecoration(
               color: Colors.white54,
               borderRadius: BorderRadius.circular(10),
@@ -230,10 +231,7 @@ class _NavbarUserPopUpButtonState<T> extends State<NavbarUserPopUpButton<T>> {
             children: [
               Text(
                 widget.username ?? "Unknown User",
-                style: Theme.of(context)
-                    .textTheme
-                    .bodyText1!
-                    .merge(TextStyle(fontWeight: FontWeight.bold)),
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
               ),
               Row(
                 mainAxisSize: MainAxisSize.min,

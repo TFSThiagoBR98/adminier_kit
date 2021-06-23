@@ -36,8 +36,11 @@ class _AdminierSidebarDrawerState extends State<AdminierSidebarDrawer> {
         padding: EdgeInsets.only(right: widget.elevation + 5),
         child: Drawer(
           elevation: widget.elevation,
-          child: Column(
-            children: buildNav(),
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: buildNav(),
+            ),
           ),
         ),
       ),
